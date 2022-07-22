@@ -1,28 +1,11 @@
-# Spring Cloud Function example
+# Spring Cloud Function using AWS Adapter example
 
-## Exposed Functions as Endpoints
-- *Supplier* - `/sayHelloSupplier` - returns an output
+## Exposed Function as API Endpoint using AWS API Gateway
+`Hello.java` is exposed as function to the AWS Request Handler using `SpringBootRequestHandler`.
+`APIGatewayProxyRequestEvent` is the input object and `APIGatewayProxyResponseEvent` is the response object.
 
-```
-curl -H 'Content-Type: text/plain' http://localhost:8080/supply
-Hello cloud function⏎                                                                                                      
-
-```
-
-- *Consumer* - `/sayHelloConsumer` - expects an input
+### Command used:
 
 ```
-curl -H 'Content-Type: text/plain' http://localhost:8080/sayHelloConsumer -d 'Juan'
-```
-
-- *Function* - `/function` - expects an input and output
-```
-curl -H 'Content-Type: text/plain' http://localhost:8080/toUpperCase -d 'hola, es una prueba'
-HOLA, ES UNA PRUEBA⏎    
-```
-
-- *Function* - `/hello` - expects an input and output
-```                                                                                        
-curl -H 'Content-Type: text/plain' http://localhost:8080/hello -d 'Juan'
-Hello Juan⏎  
+curl -X POST -H 'Content-Type: text/plain' <API_GATEWAY_URL> -d 'TechPrimers' -i
 ```
